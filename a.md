@@ -21,3 +21,8 @@ Cac requests:
           POST/GET/PUT/DELLETE
 
 Buoc 6: cai day mysql2 npm install --save-exact mysql2@2.3.0
+
+Tham so tren router:
+     Route path: /users/:userId/books/:bookId
+     Request URL: http://localhost:3000/users/34/books/8989
+     req.params: { "userId": "34", "bookId": "8989" }
