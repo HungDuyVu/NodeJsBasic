@@ -1,0 +1,17 @@
+// Phu trach tat cac cac route
+import express from "express";
+import homeController from '../controller/homeController';
+
+let router = express.Router();
+
+const initWebRoute = (app) => {
+     router.get('/', homeController.getHomepage);
+
+     router.get('/about', (req, res) => {
+          res.send('I am Hung');
+     })
+
+     return app.use('/', router);
+}
+
+export default initWebRoute;

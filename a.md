@@ -8,3 +8,8 @@ Buoc 4: fix loi de code chay tren moi phien ban npm install --save-exact body-pa
 static file: nhung file cho phep nguoi dung tu phia trinh duyet co the truy cap duoc
 
 Buoc 5: cai dat dotenv npm install --save-exact dotenv@10.0.0
+
+Buoc 6 to chuc code theo mo hinh mvc
+     - controller: nhan req - yeu cau tu nguoi dung gui len va xu ly du lieu
+     - Model: ket noi truc tiep den database roi chuyen du lieu len
+     - view: hien thi nguoi dung
