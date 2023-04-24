@@ -13,3 +13,11 @@ Buoc 6 to chuc code theo mo hinh mvc
      - controller: nhan req - yeu cau tu nguoi dung gui len va xu ly du lieu
      - Model: ket noi truc tiep den database roi chuyen du lieu len
      - view: hien thi nguoi dung
+
+Cac requests:
+     Lay thong tin ve: GET
+     Them moi data vao database: POST
+     CRUD: create/read/update/delete
+          POST/GET/PUT/DELLETE
+
+Buoc 6: cai day mysql2 npm install --save-exact mysql2@2.3.0
