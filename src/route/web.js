@@ -56,7 +56,7 @@ const initWebRoute = (app) => {
                   next();
               }
           })
-      }, homeController.handleUploadMultipleFiles)
+     }, homeController.handleUploadMultipleFiles)
      
      router.get('/about', (req, res) => {
           res.send(`I'm Eric!`)

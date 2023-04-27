@@ -36,3 +36,9 @@ Buoc 8: cai dat upload file - multer
      upload file: single / multiple phu thuoc HTML
      path: lay duong dan cua file
      npm install --save-exact app-root-path@3.0.0
+
+Buoc 9: Middleware: function viet tren server o giua request va response
+     logging middleware: ghi lai thong tin nguoi dung gui len
+     authentication check middleware: check quyen cua nguoi dung
+     middleware to parse JSON data from Request:
+     npm install --save-exact morgan@1.10.0
