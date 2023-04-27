@@ -1,4 +1,6 @@
 import pool from '../configs/connectDB';
+import multer from 'multer';
+import path from 'path';
 
 let getHomepage = async (req, res) => {
      const [rows, fields] = await pool.execute('SELECT * FROM user');
@@ -43,7 +45,37 @@ let postUpdateUser = async (req, res) => {
     return res.redirect('/');
 }
 
+let getUploadFilePage = async (req, res) => {
+    return res.render('uploadFile.ejs')
+}
+
+const imageFilter = function(req, file, cb) {
+    // Accept images only
+    if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+        req.fileValidationError = 'Only image files are allowed!';
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+
+const upload = multer().single('profile_pic');
+
+let handleUploadFile = async (req, res) => {
+
+    if (req.fileValidationError) {
+
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.file) {
+        return res.send('Please select an image to upload');
+    }
+
+    // Display uploaded image for user validation
+    res.send(`You have uploaded this image: <hr/><img src="/image/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`);
+    // });
+}
+
 module.exports = {
     getHomepage, getDetailPage, createNewUser, deleteUser, getEditPage,
-    postUpdateUser
+    postUpdateUser, getUploadFilePage, handleUploadFile
 }

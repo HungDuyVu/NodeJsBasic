@@ -30,3 +30,9 @@ Tham so tren router:
 
 Buoc 7: RESTfull APT     
      cài đặt postman API
+
+Buoc 8: cai dat upload file - multer
+     npm install --save-exact multer@1.4.3
+     upload file: single / multiple phu thuoc HTML
+     path: lay duong dan cua file
+     npm install --save-exact app-root-path@3.0.0
