@@ -3,22 +3,22 @@ import multer from 'multer';
 import path from 'path';
 
 let getHomepage = async (req, res) => {
-     const [rows, fields] = await pool.execute('SELECT * FROM user');
+     const [rows, fields] = await pool.execute('SELECT * FROM DICHVU');
  
      return res.render('index.ejs', { dataUser: rows, test: 'abc string test' })
 }
 
 let getDetailPage = async (req, res) => {
-     let userId = req.params.id;
-     let [user] = await pool.execute(`select * from user where id = ?`, [userId]);
+     let userId = req.params.maDV;
+     let [user] = await pool.execute(`select * from DICHVU where maDV = ?`, [userId]);
      return res.send(JSON.stringify(user))
  }
 
 let createNewUser = async (req, res) => {
-    let { firstName, lastName, email, address } = req.body;
+    let {maDV, tenDV, giaDV} = req.body;
  
-    await pool.execute('insert into user(firstName, lastName, email, address) values (?, ?, ?, ?)',
-         [firstName, lastName, email, address]);
+    await pool.execute('insert into DICHVU(maDV, tenDV, giaDV) values (?, ?, ?)',
+         [maDV, tenDV, giaDV]);
      
     // load ve trang chinh
     return res.redirect('/')
@@ -26,21 +26,21 @@ let createNewUser = async (req, res) => {
 
 let deleteUser = async (req, res) => {
     let userId = req.body.userId;
-    await pool.execute('delete from user where id = ?', [userId]);
+    await pool.execute('delete from DICHVU where maDV = ?', [userId]);
     return res.redirect('/');
 }
 
 let getEditPage = async (req, res) => {
-    let id = req.params.id;
-    let [user] = await pool.execute('select * from user where id = ?', [id]);
+    let userId = req.params.maDV;
+    let [user] = await pool.execute('select * from DICHVU where maDV = ?', [userId]);
     return res.render('update.ejs', { dataUser: user[0] });
 }
 
 let postUpdateUser = async (req, res) => {
-    let { firstName, lastName, email, address, id } = req.body;
+    let { maDV, tenDV, giaDV } = req.body;
 
-    await pool.execute('update user set firstName= ?, lastName = ? , email = ? , address= ? where id = ?',
-        [firstName, lastName, email, address, id]);
+    await pool.execute('update DICHVU set maDV= ?, tenDV = ?  where giaDV = ?',
+        [maDV, tenDV, giaDV]);
 
     return res.redirect('/');
 }

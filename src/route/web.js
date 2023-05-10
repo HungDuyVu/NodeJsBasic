@@ -33,11 +33,11 @@ const storage = multer.diskStorage({
 
 const initWebRoute = (app) => {
      router.get('/', homeController.getHomepage);
-     router.get('/detail/user/:id', homeController.getDetailPage);
+     router.get('/detail/user/:maDV', homeController.getDetailPage);
      router.post('/create-new-user', homeController.createNewUser);
 
      router.post('/delete-user', homeController.deleteUser);
-     router.get('/edit-user/:id', homeController.getEditPage);
+     router.get('/edit-user/:maDV', homeController.getEditPage);
      router.post('/update-user', homeController.postUpdateUser);
 
      router.get('/upload', homeController.getUploadFilePage);

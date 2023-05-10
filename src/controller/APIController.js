@@ -4,7 +4,7 @@ let getAllUsers = async (req, res) => {
     //http
     // 404 501
     // json/xml => object
-    const [rows, fields] = await pool.execute('SELECT * FROM user');
+    const [rows, fields] = await pool.execute('SELECT * FROM DICHVU');
 
     return res.status(200).json({
         message: 'ok',
@@ -13,16 +13,16 @@ let getAllUsers = async (req, res) => {
 }
 
 let createNewUser = async (req, res) => {
-    let { firstName, lastName, email, address } = req.body;
+    let { maDV, tenDV, giaDV } = req.body;
 
-    if (!firstName || !lastName || !email || !address) {
+    if (!maDV || !tenDV || !giaDV) {
         return res.status(200).json({
             message: 'missing required params'
         })
     }
 
-    await pool.execute('insert into user(firstName, lastName, email, address) values (?, ?, ?, ?)',
-        [firstName, lastName, email, address]);
+    await pool.execute('insert into DICHVU(maDV, tenDV, giaDC) values (?, ?, ?)',
+        [maDV, tenDV, giaDC]);
 
     return res.status(200).json({
         message: 'ok'
@@ -30,15 +30,15 @@ let createNewUser = async (req, res) => {
 }
 
 let updateUser = async (req, res) => {
-    let { firstName, lastName, email, address, id } = req.body;
-    if (!firstName || !lastName || !email || !address || !id) {
+    let { tenDV, giaDV, maDV } = req.body;
+    if (!tenDV || !giaDV || !maDV) {
         return res.status(200).json({
             message: 'missing required params'
         })
     }
 
-    await pool.execute('update user set firstName= ?, lastName = ? , email = ? , address= ? where id = ?',
-        [firstName, lastName, email, address, id]);
+    await pool.execute('update DICHVU set tenDV = ? , giaDV = ?  where maDV = ?',
+        [tenDV, giaDV, maDV]);
 
     return res.status(200).json({
         message: 'ok'
@@ -46,13 +46,13 @@ let updateUser = async (req, res) => {
 }
  
 let deleteUser = async (req, res) => {
-    let userId = req.params.id;
+    let userId = req.params.maDV;
     if (!userId) {
         return res.status(200).json({
             message: 'missing required params'
         })
     }
-    await pool.execute('delete from user where id = ?', [userId])
+    await pool.execute('delete from DICHVU where id = maDV', [userId])
     return res.status(200).json({
         message: 'ok'
     })

@@ -11,22 +11,18 @@
      <div class="update-user-container">
           <form action="/update-user" method="POST">
               <div>
-                  <label>First name:</label>
-                  <input name="firstName" value="<%= dataUser.firstName %>" />
+                  <label>Mã dịch vụ</label>
+                  <input name="maDV" value="<%= dataUser.maDV %>" />
               </div>
               <div>
-                  <label>Last name:</label>
-                  <input name="lastName" value="<%= dataUser.lastName %>" />
+                  <label>Tên dịch vụ:</label>
+                  <input name="tenDV" value="<%= dataUser.tenDV %>" />
               </div>
               <div>
-                  <label>Email:</label>
-                  <input name="email" value="<%= dataUser.email %>" />
+                  <label>Giá dịch vụ:</label>
+                  <input name="giaDV" value="<%= dataUser.giaDV %>" />
               </div>
-              <div>
-                  <label>Address:</label>
-                  <input name="address" value="<%= dataUser.address %>" />
-              </div>
-              <input type="text" value="<%= dataUser.id %>" hidden name="id" />
+              <input type="text" value="<%= dataUser.giaDV %>" hidden name="maDV" />
               <div>
                   <button class="btn-save" type="submit">Save</button>
               </div>
